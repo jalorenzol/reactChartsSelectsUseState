@@ -2,8 +2,6 @@ import React from 'react'
 import { SalesCategoriesData, SalesFoodTypesData, SalesMiscelTypesData, SalesTecnoTypesData, SelectClothingOptions, SelectDesktopOptions, SelectDessertsOptions, SelectFoodOptions, SelectHomeOptions, SelectLaptopsOptions, SelectMeatsOptions, SelectMiscelOptions, SelectShoesOptions, SelectTecnoOptions, SelectWomenswearOptions } from './Data';
 import { SelectOptions } from "./Data";
 
-let labels = []
-let data = []
 const levels = []
 const options = SelectOptions.map((data) => data.value)
 const types = [
@@ -49,43 +47,28 @@ export const generateDataset = (level, option) => {
   else if (level === '1') {
     switch (option) {
       case SelectOptions[0].value:
-        labels = SelectTecnoOptions.map((data) => data.label)
-        data = generateDatas(option)
+        return {
+          label: SelectTecnoOptions.map((data) => data.label),
+          data: generateDatas(option)
+        }
       case SelectOptions[1].value:
-        labels = SelectMiscelOptions.map((data) => data.label)
-        data = generateDatas(option)
+        return {
+          label: SelectMiscelOptions.map((data) => data.label),
+          data: generateDatas(option)
+        }
       case SelectOptions[2].value:
-        labels = SelectFoodOptions.map((data) => data.label)
-        data = generateDatas(option)
+        return {
+          label: SelectFoodOptions.map((data) => data.label),
+          data: generateDatas(option)
+        } 
     }
   }
   else if (level === '2') {
     switch (option) {
-
+      
     }
   }
 
-
-
-
-  console.log(labels, data)
-  return (
-    [
-      
-      {
-        label: labels[0],
-        data: data[0]
-      },
-      {
-        label: labels[1],
-        data: data[1]
-      },
-      {
-        label: labels[2],
-        data: data[2]
-      }
-    ]
-  )
 }
 
 function generateDatas(option) {
