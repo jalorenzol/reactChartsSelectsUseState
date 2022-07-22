@@ -71,6 +71,7 @@ export const generateDataset = (level, option) => {
   console.log(labels, data)
   return (
     [
+      
       {
         label: labels[0],
         data: data[0]

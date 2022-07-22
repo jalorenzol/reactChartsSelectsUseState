@@ -122,7 +122,285 @@ export const SalesFoodTypesData = [
     vegetables: 1300
   }
 ]
+export const SalesHomeTypesData = [
 
+  {
+    id: 1,
+    year: 2016,
+    daytron: 800,
+    creative: 500,
+    samsung: 700
+  },
+  {
+    id: 2,
+    year: 2017,
+    daytron: 1000,
+    creative: 600,
+    samsung: 1400
+  },
+  {
+    id: 3,
+    year: 2018,
+    daytron: 700,
+    creative: 1000,
+    samsung: 1300
+  },
+  {
+    id: 4,
+    year: 2019,
+    daytron: 2000,
+    creative: 1500,
+    samsung: 1500
+  }
+]
+export const SalesLaptopTypesData = [
+
+  {
+    id: 1,
+    year: 2016,
+    msi: 300,
+    mac: 200,
+    dell: 500
+  },
+  {
+    id: 2,
+    year: 2017,
+    msi: 500,
+    mac: 300,
+    dell: 700
+  },
+  {
+    id: 3,
+    year: 2018,
+    msi: 800,
+    mac: 600,
+    dell: 1100
+  },
+  {
+    id: 4,
+    year: 2019,
+    msi: 1000,
+    mac: 800,
+    dell: 1200
+  }
+]
+export const SalesDesktopTypesData = [
+
+  {
+    id: 1,
+    year: 2016,
+    msi: 1000,
+    mac: 800,
+    dell: 1200
+  },
+  {
+    id: 2,
+    year: 2017,
+    msi: 700,
+    mac: 800,
+    dell: 1000
+  },
+  {
+    id: 3,
+    year: 2018,
+    msi: 2000,
+    mac: 600,
+    dell: 900
+  },
+  {
+    id: 4,
+    year: 2019,
+    msi: 3200,
+    mac: 800,
+    dell: 3000
+  }
+]
+export const SalesWomenswearTypesData = [
+
+  {
+    id: 1,
+    year: 2016,
+    mango: 450,
+    cortefiel: 550,
+    zara: 500
+  },
+  {
+    id: 2,
+    year: 2017,
+    mango: 800,
+    cortefiel: 700,
+    zara: 500
+  },
+  {
+    id: 3,
+    year: 2018,
+    mango: 320,
+    cortefiel: 450,
+    zara: 230
+  },
+  {
+    id: 4,
+    year: 2019,
+    mango: 700,
+    cortefiel: 400,
+    zara: 500
+  }
+]
+export const SalesClothingTypesData = [
+
+  {
+    id: 1,
+    year: 2016,
+    gucci: 150,
+    prada: 200,
+    fendi: 150
+  },
+  {
+    id: 2,
+    year: 2017,
+    gucci: 300,
+    prada: 250,
+    fendi: 450
+  },
+  {
+    id: 3,
+    year: 2018,
+    gucci: 300,
+    prada: 500,
+    fendi: 400
+  },
+  {
+    id: 4,
+    year: 2019,
+    gucci: 600,
+    prada: 600,
+    fendi: 200
+  }
+]
+export const SalesShoesTypesData = [
+
+  {
+    id: 1,
+    year: 2016,
+    gucci: 300,
+    nike: 400,
+    adidas: 300
+  },
+  {
+    id: 2,
+    year: 2017,
+    gucci: 450,
+    nike: 450,
+    adidas: 600
+  },
+  {
+    id: 3,
+    year: 2018,
+    gucci: 250,
+    nike: 150,
+    adidas: 400
+  },
+  {
+    id: 4,
+    year: 2019,
+    gucci: 700,
+    nike: 600,
+    adidas: 700
+  }
+]
+export const SalesDessertsTypesData = [
+
+  {
+    id: 1,
+    year: 2016,
+    ricolino: 60,
+    halls: 70,
+    lucas: 170
+  },
+  {
+    id: 2,
+    year: 2017,
+    ricolino: 120,
+    halls: 200,
+    lucas: 280
+  },
+  {
+    id: 3,
+    year: 2018,
+    ricolino: 320,
+    halls: 500,
+    lucas: 380
+  },
+  {
+    id: 4,
+    year: 2019,
+    ricolino: 450,
+    halls: 450,
+    lucas: 1100
+  }
+]
+export const SalesMeatsTypesData = [
+
+  {
+    id: 1,
+    year: 2016,
+    sahi: 300,
+    angus: 300,
+    jack: 400
+  },
+  {
+    id: 2,
+    year: 2017,
+    sahi: 450,
+    angus: 350,
+    jack: 600
+  },
+  {
+    id: 3,
+    year: 2018,
+    sahi: 1200,
+    angus: 800,
+    jack: 700
+  },
+  {
+    id: 4,
+    year: 2019,
+    sahi: 1500,
+    angus: 2300,
+    jack: 600
+  }
+]
+export const SalesVegetalsTypesData = [
+
+  {
+    id: 1,
+    year: 2016,
+    augason: 40,
+    honey: 50,
+    jack: 110
+  },
+  {
+    id: 2,
+    year: 2017,
+    augason: 60,
+    honey: 150,
+    jack: 190
+  },
+  {
+    id: 3,
+    year: 2018,
+    augason: 200,
+    honey: 190,
+    jack: 210
+  },
+  {
+    id: 4,
+    year: 2019,
+    augason: 450,
+    honey: 250,
+    jack: 600
+  }
+]
 export const SelectOptions = [
   {
     value: 'tecno',
