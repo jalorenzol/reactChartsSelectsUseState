@@ -4,6 +4,9 @@ import { SelectOptions } from "./Data";
 
 let levels = []
 const options = SelectOptions.map((data) => data.value)
+const tecnoTypes = SelectTecnoOptions.map((data) => data.value)
+const miscelTypes = SelectMiscelOptions.map((data) => data.value)
+const foodTypes = SelectFoodOptions.map((data) => data.value)
 const types = [
   SelectTecnoOptions.map((data) => data.value),
   SelectMiscelOptions.map((data) => data.value),
@@ -22,17 +25,27 @@ const products = [
 levels = [options, types, products]
 
 let data = []
+let label = []
 
 export const generateBarChar = (change) => {
   let level = 0
   let index
-  while (index === undefined) {
-    index = levels[level].indexOf(change.value)
-    if (index === undefined) {
-      ++level
-    }
+
+  index = levels[level].indexOf(change.value)
+
+
+  while (index === -1) {
+    ++level
+    console.log(level)
+    levels[level].map((data) => {
+      index = data.indexOf(change.value)
+      
+    })
   }
+
+
   console.log(level)
+  console.log(index)
   console.log(levels)
   return {
     labels: SalesCategoriesData.map((data) => data.year),
@@ -43,12 +56,12 @@ export const generateBarChar = (change) => {
 
 
 export const generateDataset = (level, option) => {
-  let label
+
   data = generateDatas(option)
-  if (level === '0') {
+  if (level === 0) {
     label = SelectOptions.map((data) => data.label)
   }
-  else if (level === '1') {
+  else if (level === 1) {
     switch (option) {
       case SelectOptions[0].value:
         label = SelectTecnoOptions.map((data) => data.label)
@@ -61,7 +74,7 @@ export const generateDataset = (level, option) => {
         break
     }
   }
-  else if (level === '2') {
+  else if (level === 2) {
     switch (option) {
       case SelectTecnoOptions[0].value:
         label = SelectHomeOptions.map((data) => data.label)
