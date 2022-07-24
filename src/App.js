@@ -7,24 +7,23 @@ import {
   SelectOptions,
 } from './Data';
 import { useState } from 'react';
-import { createLevelOption, generateBarChar, generateDataset } from './GenerateDataset';
+import { generateBarChar, generateDataset } from './GenerateDataset';
 import Select from 'react-select';
-import { selectOptions, selectTypes,dataOptionsRepresentation } from './SelectOptions';
+import { selectOptions, selectTypes} from './SelectOptions';
 
 let option = ''
 let type =''
 
 function App() {
-
   const [salesData, setSalesData] = useState({
     labels: SalesCategoriesData.map((data) => data.year),
     datasets: generateDataset('0', '')
   })
 
 
-  const [selectCategoriOptions, setSelectOptions] = useState([])
+  const [selectCategoriOptions, setSelectOptions] = useState("")
 
-  const [selectProductOptions, setProductOptions] = useState([])
+  const [selectProductOptions, setProductOptions] = useState("")
 
 
   let onchangeCategoriEvent = (change) => {

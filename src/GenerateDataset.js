@@ -1,8 +1,8 @@
 import React from 'react'
-import { SalesCategoriesData, SalesFoodTypesData, SalesMiscelTypesData, SalesTecnoTypesData, SelectClothingOptions, SelectDesktopOptions, SelectDessertsOptions, SelectFoodOptions, SelectHomeOptions, SelectLaptopsOptions, SelectMeatsOptions, SelectMiscelOptions, SelectShoesOptions, SelectTecnoOptions, SelectWomenswearOptions } from './Data';
+import { SalesCategoriesData, SalesFoodTypesData, SalesMiscelTypesData, SalesTecnoTypesData, SelectClothingOptions, SelectDesktopOptions, SelectDessertsOptions, SelectFoodOptions, SelectHomeOptions, SelectLaptopsOptions, SelectMeatsOptions, SelectMiscelOptions, SelectShoesOptions, SelectTecnoOptions, SelectVegetablesOptions, SelectWomenswearOptions } from './Data';
 import { SelectOptions } from "./Data";
 
-const levels = []
+let levels = []
 const options = SelectOptions.map((data) => data.value)
 const types = [
   SelectTecnoOptions.map((data) => data.value),
@@ -21,6 +21,8 @@ const products = [
 ]
 levels = [options, types, products]
 
+let data = []
+
 export const generateBarChar = (change) => {
   let level = 0
   let index
@@ -30,6 +32,8 @@ export const generateBarChar = (change) => {
       ++level
     }
   }
+  console.log(level)
+  console.log(levels)
   return {
     labels: SalesCategoriesData.map((data) => data.year),
     datasets: generateDataset(level, levels[level][index])
@@ -39,35 +43,69 @@ export const generateBarChar = (change) => {
 
 
 export const generateDataset = (level, option) => {
-
+  let label
+  data = generateDatas(option)
   if (level === '0') {
-    labels = SelectOptions.map((data) => data.label)
-    data = generateDatas(option)
+    label = SelectOptions.map((data) => data.label)
   }
   else if (level === '1') {
     switch (option) {
       case SelectOptions[0].value:
-        return {
-          label: SelectTecnoOptions.map((data) => data.label),
-          data: generateDatas(option)
-        }
+        label = SelectTecnoOptions.map((data) => data.label)
+        break
       case SelectOptions[1].value:
-        return {
-          label: SelectMiscelOptions.map((data) => data.label),
-          data: generateDatas(option)
-        }
+        label = SelectMiscelOptions.map((data) => data.label)
+        break
       case SelectOptions[2].value:
-        return {
-          label: SelectFoodOptions.map((data) => data.label),
-          data: generateDatas(option)
-        } 
+        label = SelectFoodOptions.map((data) => data.label)
+        break
     }
   }
   else if (level === '2') {
     switch (option) {
-      
+      case SelectTecnoOptions[0].value:
+        label = SelectHomeOptions.map((data) => data.label)
+        break
+      case SelectTecnoOptions[1].value:
+        label = SelectLaptopsOptions.map((data) => data.label)
+        break
+      case SelectTecnoOptions[2].value:
+        label = SelectDesktopOptions.map((data) => data.label)
+        break
+      case SelectMiscelOptions[0].value:
+        label = SelectWomenswearOptions.map((data) => data.label)
+        break
+      case SelectMiscelOptions[1].value:
+        label = SelectClothingOptions.map((data) => data.label)
+        break
+      case SelectMiscelOptions[2].value:
+        label = SelectShoesOptions.map((data) => data.label)
+        break
+      case SelectFoodOptions[0].value:
+        label = SelectDessertsOptions.map((data) => data.label)
+        break
+      case SelectFoodOptions[1].value:
+        label = SelectMeatsOptions.map((data) => data.label)
+        break
+      case SelectFoodOptions[2].value:
+        label = SelectVegetablesOptions.map((data) => data.label)
+        break
     }
   }
+  return [
+    {
+      label: label[0],
+      data: data[0]
+    },
+    {
+      label: label[1],
+      data: data[1]
+    },
+    {
+      label: label[2],
+      data: data[2]
+    }
+  ]
 
 }
 
