@@ -17,7 +17,7 @@ let type =''
 function App() {
   const [salesData, setSalesData] = useState({
     labels: SalesCategoriesData.map((data) => data.year),
-    datasets: generateDataset('0', '')
+    datasets: generateDataset('', '')
   })
 
 

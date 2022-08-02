@@ -1,12 +1,10 @@
 import React from 'react'
-import { SalesCategoriesData, SalesFoodTypesData, SalesMiscelTypesData, SalesTecnoTypesData, SelectClothingOptions, SelectDesktopOptions, SelectDessertsOptions, SelectFoodOptions, SelectHomeOptions, SelectLaptopsOptions, SelectMeatsOptions, SelectMiscelOptions, SelectShoesOptions, SelectTecnoOptions, SelectVegetablesOptions, SelectWomenswearOptions } from './Data';
+import { SalesCategoriesData, SalesDesktopTypesData, SalesFoodTypesData, SalesHomeTypesData, SalesLaptopTypesData, SalesMiscelTypesData, SalesTecnoTypesData, SelectClothingOptions, SelectDesktopOptions, SelectDessertsOptions, SelectFoodOptions, SelectHomeOptions, SelectLaptopsOptions, SelectMeatsOptions, SelectMiscelOptions, SelectShoesOptions, SelectTecnoOptions, SelectVegetablesOptions, SelectWomenswearOptions } from './Data';
 import { SelectOptions } from "./Data";
 
 let levels = []
 const options = SelectOptions.map((data) => data.value)
-const tecnoTypes = SelectTecnoOptions.map((data) => data.value)
-const miscelTypes = SelectMiscelOptions.map((data) => data.value)
-const foodTypes = SelectFoodOptions.map((data) => data.value)
+
 const types = [
   SelectTecnoOptions.map((data) => data.value),
   SelectMiscelOptions.map((data) => data.value),
@@ -24,12 +22,14 @@ const products = [
 ]
 levels = [options, types, products]
 
-let data = []
-let label = []
+
 
 export const generateBarChar = (change) => {
   let level = 0
-  let index
+  let optionNum = 0
+  let index = 0
+  let labels = []
+  let datasets = []
 
   index = levels[level].indexOf(change.value)
 
@@ -37,16 +37,28 @@ export const generateBarChar = (change) => {
   while (index === -1) {
     ++level
     console.log(level)
-    levels[level].map((data) => {
-      index = data.indexOf(change.value)
-      
+
+    levels[level].every((data) => {
+      data.every((arr) => {
+        index = arr.indexOf(change.value)
+        if (index !== -1) {
+          console.log("Entró")
+          labels = SalesCategoriesData.map((data) => data.year)
+          datasets = generateDataset(level, levels[level][optionNum][index])
+          return true
+        }
+        ++optionNum
+      })
+
+
     })
+
   }
 
 
   console.log(level)
   console.log(index)
-  console.log(levels)
+
   return {
     labels: SalesCategoriesData.map((data) => data.year),
     datasets: generateDataset(level, levels[level][index])
@@ -56,70 +68,66 @@ export const generateBarChar = (change) => {
 
 
 export const generateDataset = (level, option) => {
-
+  let data = []
+  let labels = []
+  console.log(option)
   data = generateDatas(option)
-  if (level === 0) {
-    label = SelectOptions.map((data) => data.label)
+  if (level === '') {
+    labels = SelectOptions.map((data) => data.label)
+  }
+  else if (level === 0) {
+    console.log("aca")
+    switch (option) {
+      case SelectOptions[0].value:
+        labels = SelectTecnoOptions.map((data) => data.label)
+        break
+      case SelectOptions[1].value:
+        labels = SelectMiscelOptions.map((data) => data.label)
+        break
+      case SelectOptions[2].value:
+        labels = SelectFoodOptions.map((data) => data.label)
+        break
+    }
   }
   else if (level === 1) {
     switch (option) {
-      case SelectOptions[0].value:
-        label = SelectTecnoOptions.map((data) => data.label)
-        break
-      case SelectOptions[1].value:
-        label = SelectMiscelOptions.map((data) => data.label)
-        break
-      case SelectOptions[2].value:
-        label = SelectFoodOptions.map((data) => data.label)
-        break
-    }
-  }
-  else if (level === 2) {
-    switch (option) {
       case SelectTecnoOptions[0].value:
-        label = SelectHomeOptions.map((data) => data.label)
+        labels = SelectHomeOptions.map((data) => data.label)
         break
       case SelectTecnoOptions[1].value:
-        label = SelectLaptopsOptions.map((data) => data.label)
+        labels = SelectLaptopsOptions.map((data) => data.label)
         break
       case SelectTecnoOptions[2].value:
-        label = SelectDesktopOptions.map((data) => data.label)
+        labels = SelectDesktopOptions.map((data) => data.label)
         break
       case SelectMiscelOptions[0].value:
-        label = SelectWomenswearOptions.map((data) => data.label)
+        labels = SelectWomenswearOptions.map((data) => data.label)
         break
       case SelectMiscelOptions[1].value:
-        label = SelectClothingOptions.map((data) => data.label)
+        labels = SelectClothingOptions.map((data) => data.label)
         break
       case SelectMiscelOptions[2].value:
-        label = SelectShoesOptions.map((data) => data.label)
+        labels = SelectShoesOptions.map((data) => data.label)
         break
       case SelectFoodOptions[0].value:
-        label = SelectDessertsOptions.map((data) => data.label)
+        labels = SelectDessertsOptions.map((data) => data.label)
         break
       case SelectFoodOptions[1].value:
-        label = SelectMeatsOptions.map((data) => data.label)
+        labels = SelectMeatsOptions.map((data) => data.label)
         break
       case SelectFoodOptions[2].value:
-        label = SelectVegetablesOptions.map((data) => data.label)
+        labels = SelectVegetablesOptions.map((data) => data.label)
         break
     }
   }
-  return [
-    {
-      label: label[0],
-      data: data[0]
-    },
-    {
-      label: label[1],
-      data: data[1]
-    },
-    {
-      label: label[2],
-      data: data[2]
-    }
-  ]
-
+  let datasets = []
+  labels.map((labeldata) => {
+    datasets.push({
+      label: labeldata,
+      data: data.shift()
+    })
+  })
+  return datasets
 }
 
 function generateDatas(option) {
@@ -148,5 +156,25 @@ function generateDatas(option) {
         SalesFoodTypesData.map((data) => data.meats),
         SalesFoodTypesData.map((data) => data.vegetables)
       ]
+    case types[0][0]:
+      return [
+        SalesHomeTypesData.map((data) => data.daytron),
+        SalesHomeTypesData.map((data) => data.creative),
+        SalesHomeTypesData.map((data) => data.samsung)
+      ]
+    case types[0][1]:
+      return [
+        SalesLaptopTypesData.map((data) => data.msi),
+        SalesLaptopTypesData.map((data) => data.mac),
+        SalesLaptopTypesData.map((data) => data.dell)
+      ]
+    case types[0][2]:
+      return [
+        SalesDesktopTypesData.map((data) => data.msi),
+        SalesDesktopTypesData.map((data) => data.mac),
+        SalesDesktopTypesData.map((data) => data.dell)
+      ]
+
+
   }
 }
